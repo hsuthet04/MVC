@@ -2,9 +2,10 @@
 
 class Home extends Controller{
     public function __construct(){
-        echo "i am constructor of ".__class__."class<br>";
+       $this->userModel=$this->model("UserModel");
     }
-    public function index(){
-        $this->view("home/index");
+    public function index($data=[]){
+        $data=$this->userModel->getAllUser();
+        $this->view("home/index",$data);
     }
 }
