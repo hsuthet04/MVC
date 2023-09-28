@@ -4,9 +4,10 @@ class User extends Controller{
     public function __construct(){
         $this->userModel=$this->model('UserModel');
     }
+    private $userModel;
     public function register(){
       if($_SERVER['REQUEST_METHOD']=="POST"){
-            $_POST=filter_input_array(INPUT_POST);
+            $_POST=filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
             $data=[
                 "name"=>$_POST['name'],
                 "email"=>$_POST['email'],
@@ -66,12 +67,32 @@ class User extends Controller{
                 $data['password_err']="Password must be supply";
             }
             if(empty($data['email_err']) && empty($data['password_err'])){
-                echo "Ready";
+                $rowUser=$this->userModel->getUserByEmail($data['email']);
+                //print_r($rowUser);
+                if($rowUser){
+                    // print_r($rowUser);
+                        $hash_pass = $rowUser[0]->password;
+                        if($data['password']){
+                            setUserSession($rowUser);
+                            //print_r($data['password']);
+                            redirect(URLROOT.'admin/home');
+                        }else{
+                            flash("login_fail","User rror");
+                            //print_r($data['password']);
+                            $this->view('user/login');
+                        }
+                }else{
+                $data['email_err']="Email error";
+            }
             }else{
                 $this->view("user/login",$data);
             }
         }else{
             $this->view("user/login");
         }
+    }
+    public function logout(){
+        unsetUserSession();
+        $this->view('home/index');
     }
 }

@@ -7,6 +7,7 @@
             <div class="card bg-light p-5">
                 <!-- Register Form Start -->
                <?php flash('register_success'); ?>
+               <?php flash('login_fail'); ?>
                 <h1 class="english text-info text-center mb-3">Login to Post</h1>
                 <form action="<?php echo URLROOT.'user/login' ?>" method="post">
                     
