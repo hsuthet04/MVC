@@ -1,15 +1,26 @@
 <?php
 
 class Post extends Controller{
+    private $postModel;
+    private $catModel;
     public function __construct(){
         //parent::__construct();
-        echo "i am constructor of ".__CLASS__."class<br>";
+        $this->postModel=$this->model("PostModel");
+        $this->catModel=$this->model("CategoryModel");
     }
-    public function index(){
-        echo "i am index method of ".__CLASS__."class<br>";
+    public function home($params=[]){
+        //echo $params[0];
+        $data=[
+            'cats'=>'',
+            'posts'=>''
+        ];
+        $data['cats']=$this->catModel->getAllCategory();
+        $data['posts']=$this->postModel->getPostByCatId($params[0]);
+        $this->view("admin/post/home",$data);
     }
-    public function show($data=[]){
-        echo "i have nothing to show";
-        echo "<pre>".print_r($data,true)."</pre>";
-    }
+    // public function show($data=[]){
+    //     echo "i have nothing to show of". __class__ ."class<br>";
+    //     echo "<pre>".print_r($data,true)."</pre>";
+    // }
+
 }

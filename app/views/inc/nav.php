@@ -1,6 +1,6 @@
 <div class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="<?php echo URLROOT ?>">
    <img src="<?php echo URLROOT."assets/imgs/cutie.jpg" ?>" alt="" width="30" height="30"> 
   <span class="english">Capybara House</span>
   </a>
@@ -11,14 +11,16 @@
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
+      <?php if(getUserSession()): ?>
+        <li class="nav-item active">
+          <a class="nav-link" href="<?php echo URLROOT.'admin/home' ?>">Admin</a>
+        </li>
+      <?php endif; ?>
       <li class="nav-item">
         <a class="nav-link" href="#">Features</a>
       </li>
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="https://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
         <?php if(getUserSession() != false) : ?>
           <?php echo getUserSession()->name; ?>

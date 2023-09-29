@@ -20,6 +20,25 @@ function flash($name='',$message=''){
         }
     }
 }
+function setCurrentId($value){
+    print_r($value);
+    if(isset($_SESSION['curId'])){
+        
+        unset($_SESSION['curId']);
+    }
+    $_SESSION['curId']=$value;
+}
+function getCurrentId(){
+    if(isset($_SESSION['curId'])){
+        //print_r($_SESSION['curId']);
+        return $_SESSION['curId'];
+    }
+}
+function deleteCurrentId(){
+    if(isset($_SESSION['curId'])){
+        unset($_SESSION['curId']);
+    }
+}
 function setUserSession($user){
     $_SESSION['currentUser']=$user;
 }

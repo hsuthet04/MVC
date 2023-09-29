@@ -24,4 +24,21 @@ class CategoryModel{
         return $this->db->execute();
 
     }
+    public function getCategoryById($id){
+        $this->db->query("SELECT * FROM category WHERE id=:id");
+        $this->db->bind(":id",$id);
+        return $this->db->singleSet();
+            
+    }
+    public function updateCategory($id,$name){
+        $this->db->query("UPDATE category SET name=:name WHERE id=:id");
+        $this->db->bind(":name",$name);
+        $this->db->bind(":id",$id);
+        return $this->db->execute();
+    }
+    public function deleteCat($id){
+        $this->db->query("DELETE FROM category WHERE id=:id");
+        $this->db->bind(":id",$id);
+        return $this->db->execute();
+    }
 }

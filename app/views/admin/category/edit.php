@@ -34,12 +34,14 @@
             <!-- Register Form Start -->
             <?php flash('register_success'); ?>
                <?php flash('login_fail'); ?>
-                <h1 class="english text-info text-center">Create Category</h1>
-                <form action="<?php echo URLROOT.'category/create' ?>" method="post" class="table-bordered p-5" >
+                <h1 class="english text-info text-center">Edit Category</h1>
+                
+                <form action="<?php echo URLROOT.'category/edit' ?>" method="post" class="table-bordered p-5" >
                     
                     <div class="form-group">
                         <label for="name">Category Name</label>
-                        <input type="text" class="form-control <?php echo !empty($data['email_err']) ? 'is-valid' : ''; ?>" id="name" name="name">
+                        <input type="text" class="form-control <?php echo !empty($data['email_err']) ? 'is-valid' : ''; ?>" id="name" name="name"
+                        value="<?php echo $data['currentCat'][0]->name; ?> ">
                         <span class="text-danger"><?php echo !empty($data['name_err']) ? $data['name_err']  : ''; ?></span>
                     </div>
                     
@@ -47,7 +49,7 @@
                        
                     <div>
                         <button class="btn btn-outline-secondary english">Cancel</button>
-                        <button class="btn btn-primary english">Create</button>
+                        <button class="btn btn-primary english">Update</button>
                     </div>
                 </form>
                 <!-- Register Form  End -->
