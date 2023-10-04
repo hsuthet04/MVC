@@ -17,10 +17,12 @@
                             <span class="english">
                               <?php echo $cat->name; ?>
                             </span>
+                            <?php if(getUserSession()!=null && getUserSession()->email=="ocha@gmail.com"): ?>
                             <span>
-                                <a href="<?php echo URLROOT.'category/edit/'.$cat->id ?>" class="english"><i class="fa fa-edit text-warning"></i></a>
+                                <a href="<?php echo URLROOT.'category/edit/'.$cat->id ?>" class="english"><i class="fa fa-edit text-warning" ></i></a>
                                 <a href="<?php echo URLROOT.'category/delete/'.$cat->id ?>" class="english"><i class="fa fa-trash text-danger"></i></a>
                             </span>
+                            <?php endif; ?>
                             </li>
                         <?php endforeach; ?>
                 </ul>

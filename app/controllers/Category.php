@@ -37,6 +37,7 @@ class Category extends Controller{
             $this->view('admin/category/home',$data);
         }
     }
+    
     public function edit($data=[]){
         $dta=[
             "name"=>"",

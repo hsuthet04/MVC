@@ -94,5 +94,6 @@ class User extends Controller{
     public function logout(){
         unsetUserSession();
         $this->view('home/index');
+        
     }
 }

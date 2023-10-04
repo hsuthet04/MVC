@@ -45,8 +45,6 @@ function setUserSession($user){
 function getUserSession(){
     if(isset($_SESSION['currentUser'])){
          return $_SESSION['currentUser'][0];
-    }else{
-        return false;
     }
     
 }

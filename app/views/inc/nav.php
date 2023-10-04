@@ -11,7 +11,7 @@
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
-      <?php if(getUserSession()): ?>
+      <?php if(getUserSession() != null && getUserSession()->email=="ocha@gmail.com"): ?>
         <li class="nav-item active">
           <a class="nav-link" href="<?php echo URLROOT.'admin/home' ?>">Admin</a>
         </li>

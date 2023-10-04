@@ -6,7 +6,7 @@
     <?php require_once APPROOT."/views/inc/sidebar.php"; ?>
 
         <div class="col-md-9">
-            Admin
+            
         </div>
     </div>
 </div>
